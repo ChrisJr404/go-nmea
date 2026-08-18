@@ -64,7 +64,7 @@ func newALC(s BaseSentence, opts ...ParserOption) (Sentence, error) {
 	if fieldCount == 4 {
 		return alc, p.Err()
 	}
-	if fieldCount%4 != 0 {
+	if fieldCount < 4 || fieldCount%4 != 0 {
 		return alc, errors.New("ALC data set field count is not exactly dividable by 4")
 	}
 	alc.AlertEntries = make([]ALCAlertEntry, 0, (fieldCount-4)/4)
